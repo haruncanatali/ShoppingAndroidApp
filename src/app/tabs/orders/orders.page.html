@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Siparişleriniz</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="color: red;" *ngIf="this.paymendList.length === 0">Daha önce hiç siparişiniz olmamış.</p>
+  <ion-card *ngFor="let item of paymendList">
+    <ion-card-header>
+      <ion-card-subtitle>Kart Bilgileri</ion-card-subtitle>
+    </ion-card-header>  
+    <ion-card-content>
+      <p><strong>Kart Numarası : </strong>{{item.payment.cartNumber}}</p>
+      <p><strong>Kart Sahibi : </strong>{{item.payment.cartOwner}}</p>
+      <p><strong>Son Kullanma Tarihi : </strong>{{item.payment.expirationDate}}</p>
+      <p><strong>CVV : </strong>{{item.payment.cvv}}</p>
+      <hr>
+      <h5>Alışveriş Bilgileri</h5>
+      <br>
+      <ion-item *ngFor="let itemx of item.basket">
+        <ion-avatar slot="start">
+          <img src="{{itemx.product.imageUrl}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{itemx.product.name}}</h2>
+          <h3>{{itemx.quantity}} Adet</h3>
+          <p>Fiyat : {{(itemx.quantity*itemx.product.price) | currency:'TRY':'symbol-narrow':'1.2-2'}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <p>Alışveriş ID : <strong>{{item.payment.id}}</strong></p>
+        <p>Toplam : <strong>{{getTotalPrice() | currency:'TRY':'symbol-narrow':'1.2-2'}}</strong></p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

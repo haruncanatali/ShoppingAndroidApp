@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Ürünler</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="filterTxt"></ion-searchbar>
+  <ion-card *ngFor="let product of products | productPipe:filterTxt">
+
+    <ion-img src="{{product.imageUrl}}" style="height: 300px;"></ion-img>
+
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        {{product.name}}
+      </ion-card-title>
+      <ion-card-subtitle class="ion-text-center" style="margin-top: 10px;">
+        {{(product.price) | currency:'TRY':'symbol-narrow':'1.2-2'}}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item class="ion-text-center">
+        <ion-button size="medium" (click)="azalt(product)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+        <ion-label required [innerText]="quantity" id="name-{{product.id}}"></ion-label>
+        <ion-button size="medium" (click)="arttir(product)">
+          <ion-icon name="duplicate-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-button expand="block" fill="outline" color="success" (click)="addToBasket(product)">
+        <ion-icon name="bag-add-outline"></ion-icon>
+        <span style="margin-left:20px;">Sepete Ekle</span>
+      </ion-button>
+
+      <ion-item>
+        <ion-label>
+          <p>Kalan Adet</p>
+          <h2 style="margin-top: 5px;">{{product.inventoryQuantity}}</h2>
+        </ion-label>
+      </ion-item>
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

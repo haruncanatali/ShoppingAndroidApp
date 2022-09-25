@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Demoticaret</string>
+    <string name="title_activity_main">Demoticaret</string>
+    <string name="package_name">io.ionic.starter.demo</string>
+    <string name="custom_url_scheme">io.ionic.starter.demo</string>
+</resources>

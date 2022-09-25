@@ -1,0 +1,7 @@
+{
+  "name": "ShoppingAndroidApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

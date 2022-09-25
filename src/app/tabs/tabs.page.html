@@ -1,0 +1,27 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="products">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>
+        Ürünler
+      </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="baskets">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-label>
+        <strong>{{total | currency:'TRY':'symbol-narrow':'1.2-2'}}</strong>
+      </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="orders">
+      <ion-icon name="bag-remove-outline"></ion-icon>
+      <ion-label>
+        Siparişler
+      </ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Sepet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-text-center">
+    <ion-card-header>
+      <ion-card-subtitle><h4 class="ion-text-center">Toplam Tutar</h4></ion-card-subtitle>
+      <ion-card-title class="ion-text-center">{{total | currency:'TRY':'symbol-narrow':'1.2-2'}}</ion-card-title>
+    </ion-card-header>
+    <ion-button color="primary" class="ion-text-center" style="margin-top: 10px; margin-bottom: 10px;" (click)="routeToPaymentPage()">Ödeme Yap</ion-button>
+  </ion-card>
+
+  <ion-card>
+    <ion-row *ngFor="let item of liste">
+      <ion-col size="10">
+        <ion-item >
+          <ion-avatar slot="start">
+            <img src="{{item.product.imageUrl}}">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{item.product.name}}</h2>
+            <h3>{{item.quantity}} Adet</h3>
+            <p>Fiyat : {{(item.quantity*item.product.price) | currency:'TRY':'symbol-narrow':'1.2-2'}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button color="danger" style="height: 100%; margin-bottom: 10px;" (click)="deleteBasketItem(item)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
